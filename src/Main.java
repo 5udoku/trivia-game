@@ -9,14 +9,14 @@ class Question {
     private String answer;
     private ArrayList<String> options = new ArrayList<String>();
 
-    public Question(String question, String answer/*, String[] wrongAnswers*/) {
+    public Question(String question, String answer, String[] wrongAnswers) {
         this.label = question;
         this.answer = answer;
-//        this.wrongAnswers = wrongAnswers;
         this.options.add(answer);
-        this.options.add(answer + "_B");
-        this.options.add(answer + "_C");
-        this.options.add(answer + "_D");
+
+        for(int i = 0; i < wrongAnswers.length; i++){
+            this.options.add(wrongAnswers[i]);
+        }
     }
 
     public void askQuestion() {
@@ -41,22 +41,24 @@ public class Main {
     public static void main(String[] args) {
         // User Input
         Scanner myScanner = new Scanner(System.in);
-        byte userCommand;
-        String userInput;
-
-        // Dummy data
-        Question q1 = new Question("What's 9 + 10?", "21");
-        Question q2 = new Question("Staaaahp!", "I could've dropped my croissant!");
+        String question;
+        String answer;
+        String[] wrongAnswers;
 
         // Create question
+        System.out.println("Please ask question: ");
+        question = myScanner.nextLine();
+        System.out.println("Answer: ");
+        answer = myScanner.nextLine();
+        System.out.println("Wrong options separated by commas: ");
+        wrongAnswers = myScanner.nextLine().split(",");
+        Question q = new Question(question, answer, wrongAnswers);
 
-
-        q1.askQuestion();
-        System.out.println(q1.checkAnswer("A"));
-        System.out.println(q1.checkAnswer("B"));
-
-        q2.askQuestion();
-        System.out.println(q1.checkAnswer("A"));
-        System.out.println(q1.checkAnswer("B"));
+        // Ask and check answer
+        q.askQuestion();
+        String temp = myScanner.nextLine();
+        System.out.println(q.checkAnswer(temp));
+        temp = myScanner.nextLine();
+        System.out.println(q.checkAnswer(temp));
     }
 }
