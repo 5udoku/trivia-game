@@ -1,4 +1,6 @@
 import java.util.*;
+import javafx.application.Application;
+import javafx.stage.Stage;
 
 class Question {
     public String label;
@@ -86,25 +88,15 @@ class QuestionStore{
     }
 }
 
-public class Main {
+public class TriviaGame extends Application {
+    @Override
+    public void start(Stage primaryStage) {
+        primaryStage.setTitle("Trivia Game");
+
+        primaryStage.show();
+    }
+
     public static void main(String[] args) {
-        QuestionStore qStore = QuestionStore.getInstance();
-        Scanner myScanner = new Scanner(System.in);
-        QuestionFactory qf = new QuestionFactory();
-
-        // Generate questions
-        Question q1 = qf.createQuestion();
-//        Question q2 = qf.createQuestion();
-//        Question q3 = qf.createQuestion();
-        qStore.addQuestion(q1);
-//        qStore.addQuestion(q2);
-//        qStore.addQuestion(q3);
-
-        // Ask and check answer
-        qStore.getQuestions().forEach((q) -> {
-            q.askQuestion();
-            char tmp = myScanner.next("[A-Z]").charAt(0);
-            System.out.println(q.checkAnswer(tmp));
-        });
+        launch(args);
     }
 }
