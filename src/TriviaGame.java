@@ -14,7 +14,7 @@ import java.util.List;
 public class TriviaGame extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("view/MainView.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("view/NewQuestionView.fxml"));
         Parent root = loader.load();
 
         primaryStage.setTitle("Trivia Game");

@@ -9,11 +9,9 @@ public class MainController {
     @FXML
     private ListView<QuestionModel> questionModelListView;
 
-    private MainViewModel mainViewModel;
-
     @FXML
     private void initialize(){
-        mainViewModel = new MainViewModel();
+        MainViewModel mainViewModel = new MainViewModel();
         questionModelListView.setItems(mainViewModel.getQuestions());
     }
 }
