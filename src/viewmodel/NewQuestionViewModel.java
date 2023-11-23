@@ -31,7 +31,7 @@ public class NewQuestionViewModel {
         QuestionModel question = questionFactory.createQuestion(
                 label.get(),
                 answer.get(),
-                new ArrayList<String>(List.of(options.get().split(",")))
+                new ArrayList<>(List.of(options.get().split(",")))
         );
         QuestionStore.getInstance().addQuestion(question);
     }

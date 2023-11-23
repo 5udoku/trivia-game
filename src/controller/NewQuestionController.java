@@ -24,5 +24,6 @@ public class NewQuestionController {
     @FXML
     private void handleCreateQuestion(){
         this.viewModel.createQuestion();
+        SceneController.activate("Homepage");
     }
 }

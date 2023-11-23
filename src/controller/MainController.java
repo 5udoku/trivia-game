@@ -1,17 +1,27 @@
 package controller;
 
+import javafx.event.Event;
 import javafx.fxml.FXML;
-import javafx.scene.control.ListView;
-import model.QuestionModel;
-import viewmodel.MainViewModel;
+import javafx.scene.control.Hyperlink;
 
 public class MainController {
     @FXML
-    private ListView<QuestionModel> questionModelListView;
+    private void switchScene(Event e){
+        Hyperlink eventSource = (Hyperlink) e.getSource();
+        System.out.println(eventSource.getId());
 
-    @FXML
-    private void initialize(){
-        MainViewModel mainViewModel = new MainViewModel();
-        questionModelListView.setItems(mainViewModel.getQuestions());
+        switch (eventSource.getId()){
+            case "newGameLink":
+                SceneController.activate("Homepage");
+                break;
+            case "listQuestionLink":
+                SceneController.activate("ListQuestion");
+                break;
+            case "addQuestionLink":
+                SceneController.activate("NewQuestion");
+                break;
+            default:
+                break;
+        }
     }
 }
